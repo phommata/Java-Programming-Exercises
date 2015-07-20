@@ -7,9 +7,13 @@ Implement a findMatches function that takes a query value and a pre-sorted array
 
 • The number of times the query value appears in the array (0 if the query value does not exist in the array).
 
-As an example, if findMatches is called, and  query = 8
+As an example, if findMatches is called, and 
 
-• values = { 0, 1, 2, 3, 4, 4, 5, 6, 7, 8, 8, 8, 9 } then it should return,
+• query = 8
+
+• values = { 0, 1, 2, 3, 4, 4, 5, 6, 7, 8, 8, 8, 9 } 
+
+then it should return,
 
 • firstMatchIndex = 9, because values[9] is the first occurrence of 8
 
