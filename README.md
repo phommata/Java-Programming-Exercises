@@ -1,5 +1,5 @@
-# Java-Programming-Tests
-Java Programming Tests
+# Java-Programming-Exercises
+Java Programming Exercises
 
 IntSearch.java
 
