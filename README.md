@@ -1,6 +1,8 @@
 # Java-Programming-Tests
 Java Programming Tests
 
+IntSearch.java
+
 Implement a findMatches function that takes a query value and a pre-sorted array of integers that may contain duplicates. It should find and return
 
 • The index of the first instance of the query value in the array, or -1 if the query value does not exist in the array.
