@@ -49,7 +49,7 @@ public class IntSearch {
 				lastMatchIndex = mid;
 				numberOfMatches++;
 				
-				if (mid - 1 != mid - 1){
+				if (query < values[mid]){
 					high = mid - 1;
 				} else { 
 					low = mid + 1;
