@@ -6,8 +6,8 @@ public class IntSearch {
 	**/
     public static void main(String[] args) {
     	//				0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11,12    		
-    	int[] values = {0, 1, 2, 3, 4, 4, 5, 6, 7, 8, 8, 8, 9}; // A pre-sorted array of integers. 
-    	int query = 8; // The integer to search for.
+    	int[] values = {1,2,3,3,3,4,5,5,5,5,6,7,7}; // A pre-sorted array of integers. 
+    	int query = 5; // The integer to search for.
     	
     	Matches matches = findMatches(values, query); // Search results in Matches object
     	
@@ -27,49 +27,27 @@ public class IntSearch {
 	*/
 	public static Matches findMatches(int[] values, int query) {
 		
-		int firstMatchIndex = -1;
-		int lastMatchIndex = -1;
-		int numberOfMatches = 0;
-		
-		int low = 0;
-		int high = values.length - 1;
-		
+		int firstMatchIndex = -1,lastMatchIndex=-1;
+		int low = 0,mid = 0,high = values.length - 1;
 		while (low <= high){
-			int mid = (low + high)/2;
-			
-			if (values[mid] == query && firstMatchIndex == -1){
+			mid = (low + high)/2;
+
+			if(values[mid]==query){
+				lastMatchIndex=mid;
+				firstMatchIndex=mid;
 				
-				firstMatchIndex = mid;
-				numberOfMatches++;
-				high = values.length - 1;
-				low = mid;
+				while(lastMatchIndex+1<values.length&&values[lastMatchIndex+1]==query)
+					lastMatchIndex++;
+				while(firstMatchIndex-1>=0&&values[firstMatchIndex-1]==query)
+					firstMatchIndex--; 
 				
-			} else if (values[mid] == query && (lastMatchIndex == -1 || lastMatchIndex != -1)){
-				
-				lastMatchIndex = mid;
-				numberOfMatches++;
-				
-				if (query < values[mid]){
-					high = mid - 1;
-				} else { 
-					low = mid + 1;
-				}
-				
-			} else if (query < values[mid]){
-				high = mid - 1;
-			} else {
-				low = mid + 1;
-			}
-			
+				return new Matches(firstMatchIndex,lastMatchIndex-firstMatchIndex+1); 
+			} else if(values[mid]>query)
+				high=mid-1;
+			else low=mid+1;
 		}
-				
-		if (firstMatchIndex != -1) { // First match index is set
-	    	return new Matches(firstMatchIndex, numberOfMatches);
-	    }
-	    else { // First match index is not set
-	    	return new Matches(-1, 0); 
-	    }
 		
+		return new Matches(-1,0);
 	}
 	/** 
 	* Encapsulates the position of the first match and the number of
